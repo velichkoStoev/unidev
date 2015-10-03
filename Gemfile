@@ -5,6 +5,8 @@ gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+gem 'pg'
+
 gem 'haml-rails', '~> 0.9.0'
 
 gem 'simple_form', '~> 3.2.0'
