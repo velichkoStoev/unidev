@@ -11,8 +11,10 @@ gem 'haml-rails', '~> 0.9.0'
 
 gem 'simple_form', '~> 3.2.0'
 
-# Authentication with Devise
+# Apply basic style with Bootstrap
+gem 'bootstrap-sass', '~> 3.3.5.1'
 
+# Authentication with Devise
 gem 'devise', '~> 3.5.2'
 
 # Use SCSS for stylesheets
