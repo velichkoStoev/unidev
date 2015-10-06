@@ -1,0 +1,26 @@
+.jumbotron
+  .container
+    %h1 Welcome to UniDev!
+    %p Place for ideas, development and teamwork!
+    %p
+      = link_to 'Learn more', '#', class: 'btn btn-primary btn-lg'
+      = link_to 'Sign me up right now!', new_user_registration_path, class: 'btn btn-primary btn-lg'
+.container
+  .row
+    .col-md-4
+      .h2 What?
+      .p UniDev is a development network for people studying in the same university.
+    .col-md-4
+      .h2 Why?
+      .p Because programmers with similar interests should work together - you could learn A TON from the others, you could build something beautiful and you could, hmm ... Have fun, I guess? :)
+    .col-md-4
+      .h2 How?
+      .p Just click 'Register' link up there, tell us who you are and start that sh*t!
+  %hr
+  .footer
+    %p
+      Velichko is making it!
+      %a{href: 'https://github.com/velichkoStoev'}
+        %span.glyphicon.glyphicon-heart
+      %a{href: 'mailto:veli4kostoev@gmail.com'}
+        %span.glyphicon.glyphicon-envelope

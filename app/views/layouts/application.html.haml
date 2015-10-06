@@ -1,11 +1,17 @@
 !!!
 %html
   %head
-    %title Unidev
+    %title UniDev
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
+    .nav.navbar.navbar-inverse.navbar-static-top
+      .container
+        = link_to 'UniDev', root_path, class: 'navbar-brand'
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to 'Log In', new_user_session_path
+          %li= link_to 'Register', new_user_registration_path
+    -# .notice= notice
+    -# .alert= alert
     = yield
