@@ -4,7 +4,8 @@
     %p Place for ideas, development and teamwork!
     %p
       = link_to 'Learn more', '#', class: 'btn btn-primary btn-lg'
-      = link_to 'Sign me up right now!', new_user_registration_path, class: 'btn btn-primary btn-lg'
+      - unless user_signed_in?
+        = link_to 'Sign me up right now!', new_user_registration_path, class: 'btn btn-primary btn-lg'
 .container
   .row
     .col-md-4
