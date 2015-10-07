@@ -12,6 +12,11 @@
         %ul.nav.navbar-nav.navbar-right
           %li= link_to 'Log In', new_user_session_path
           %li= link_to 'Register', new_user_registration_path
-    -# .notice= notice
-    -# .alert= alert
+    - flash.each do |name, msg|
+      - if name == 'alert'
+        = content_tag :div, msg, class: 'alert alert-danger'
+      - elsif name == 'notice'
+        = content_tag :div, msg, class: 'alert alert-info'
+      - else
+        = content_tag :div, msg, class: "alert alert-#{name}"
     = yield
