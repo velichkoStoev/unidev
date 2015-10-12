@@ -17,6 +17,9 @@ gem 'bootstrap-sass', '~> 3.3.5.1'
 # Authentication with Devise
 gem 'devise', '~> 3.5.2'
 
+# Image manipulation with Paperclip
+gem 'paperclip', '~> 4.3.1'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
