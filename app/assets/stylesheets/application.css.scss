@@ -17,6 +17,18 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+// NAVIGATION BAR
+
  .navbar-inverse {
    margin-bottom: 0;
  }
+
+// TABLES
+
+.about-table {
+  margin-top: 30px;
+}
+
+  .about-table td:nth-child(2){
+    text-align: right;
+  }

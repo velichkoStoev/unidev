@@ -1,2 +1,30 @@
 .container
   %h1= @user.full_name
+  %hr
+  .row
+    .col-md-4
+      = image_tag @user.avatar.url(:medium), class: 'img-rounded img-responsive'
+    .col-md-4
+      %h3 Started Projects
+    .col-md-4
+      %h3 Joined Projects
+  .row
+    .col-md-4
+      %h3 Information
+      %table.table.table-hover.table-bordered.about-table
+        %tr
+          %td E-mail
+          %td= @user.email
+        %tr
+          %td Birth date
+          %td= @user.birth_date.strftime('%d %B %y')
+        %tr
+          %td Faculty
+          %td= @user.faculty
+        %tr
+          %td About
+          %td= @user.about_me
+    .col-md-4
+      %h3 Skills
+    .col-md-4
+      %h3 Announcements
