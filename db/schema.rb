@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20151013122538) do
     t.integer  "project_id"
     t.integer  "user_id"
     t.string   "role"
-    t.boolean  "is_creator"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "is_creator", default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "project_participations", ["project_id"], name: "index_project_participations_on_project_id", using: :btree

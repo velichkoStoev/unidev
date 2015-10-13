@@ -4,7 +4,7 @@ class CreateProjectParticipations < ActiveRecord::Migration
       t.belongs_to :project, index: true
       t.belongs_to :user, index: true
       t.string :role
-      t.boolean :is_creator, null: true
+      t.boolean :is_creator, default: false, null: false
       t.timestamps null: false
     end
   end
