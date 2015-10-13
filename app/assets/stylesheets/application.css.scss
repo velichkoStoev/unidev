@@ -23,12 +23,18 @@
    margin-bottom: 0;
  }
 
-// TABLES
+// FOOTER
 
-.about-table {
-  margin-top: 30px;
+.glyphicon-heart {
+  color: red;
 }
 
-  .about-table td:nth-child(2){
-    text-align: right;
-  }
+.glyphicon-envelope {
+  color: black;
+}
+
+ // PROFILE PAGE
+
+ .panel-heading h3 {
+   margin-top: 10px;
+ }

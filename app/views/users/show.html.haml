@@ -5,26 +5,64 @@
     .col-md-4
       = image_tag @user.avatar.url(:medium), class: 'img-rounded img-responsive'
     .col-md-4
-      %h3 Started Projects
+      .panel.panel-info
+        .panel-heading
+          %h4
+            About
+            = @user.first_name
+        .panel-body
+          = @user.about_me
     .col-md-4
-      %h3 Joined Projects
+      .panel.panel-info
+        .panel-heading
+          %h4 Skills
+        .panel-body
+  %hr
   .row
     .col-md-4
-      %h3 Information
-      %table.table.table-hover.table-bordered.about-table
-        %tr
-          %td E-mail
-          %td= @user.email
-        %tr
-          %td Birth date
-          %td= @user.birth_date.strftime('%d %B %y')
-        %tr
-          %td Faculty
-          %td= @user.faculty
-        %tr
-          %td About
-          %td= @user.about_me
-    .col-md-4
-      %h3 Skills
-    .col-md-4
-      %h3 Announcements
+      .panel.panel-info
+        .panel-heading
+          %h4 Information
+        %table.table.table-bordered
+          %tr
+            %td E-mail
+            %td= @user.email
+          %tr
+            %td Birth Date
+            %td= @user.birth_date.strftime('%d %B %y')
+          %tr
+            %td Faculty
+            %td= @user.faculty
+    .col-md-8
+      .panel.panel-info
+        .panel-heading
+          %h4 Announcements
+        .panel-body
+  %hr
+  .row
+    .col-md-12
+      .panel.panel-info
+        .panel-heading
+          %h3 Projects
+        %table.table.table-bordered
+          %tr
+            %th Project name
+            %th Date created
+            %th Role
+            %th
+              Started by
+              = @user.first_name
+              ?
+          - @projects.each do |project|
+            %tr
+              %td
+                = project.name
+              %td
+                = project.created_at.localtime.strftime('%d %B %Y %H:%M:%S')
+              %td
+                = project.role
+              %td
+                - if project.is_creator
+                  Yes
+                - else
+                  No
