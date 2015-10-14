@@ -27,9 +27,10 @@
           %tr
             %td E-mail
             %td= @user.email
-          %tr
-            %td Birth Date
-            %td= @user.birth_date.strftime('%d %B %y')
+          - if @user.birth_date
+            %tr
+              %td Birth Date
+              %td= @user.birth_date.strftime('%d %B %y')
           %tr
             %td Faculty
             %td= @user.faculty

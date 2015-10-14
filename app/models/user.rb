@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
                     default_url: ':style/no_photo.png'
   validates_attachment_content_type :avatar, content_type: %r{/\Aimage\/.*\Z/}
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :faculty, presence: true
+
   def full_name
     "#{first_name} #{last_name}"
   end
