@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   has_many :project_participations
   has_many :projects, through: :project_participations
+  has_many :user_skills
+  has_many :skills, through: :user_skills
 
   attr_accessor :delete_avatar
 
