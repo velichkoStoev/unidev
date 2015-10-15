@@ -29,13 +29,19 @@
           %tr
             %td E-mail
             %td= @user.email
+          %tr
+            %td Faculty
+            %td= @user.faculty
           - if @user.birth_date
             %tr
               %td Birth Date
               %td= @user.birthday
           %tr
-            %td Faculty
-            %td= @user.faculty
+            %td Joined on
+            %td= @user.date_created
+          %tr
+            %td Last updated on
+            %td= @user.date_last_updated
     .col-md-8
       .panel.panel-info
         .panel-heading

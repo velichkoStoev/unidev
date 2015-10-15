@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
   end
 
   def birthday
-    birth_date.strftime('%d %B %y')
+    birth_date.strftime('%d %B %Y')
+  end
+
+  def date_created
+    created_at.strftime('%d %B %Y')
+  end
+
+  def date_last_updated
+    updated_at.strftime('%d %B %Y')
   end
 end
