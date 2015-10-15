@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(version: 20151015131740) do
 
   create_table "user_skills", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "project_id"
+    t.integer  "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_skills", ["project_id"], name: "index_user_skills_on_project_id", using: :btree
+  add_index "user_skills", ["skill_id"], name: "index_user_skills_on_skill_id", using: :btree
   add_index "user_skills", ["user_id"], name: "index_user_skills_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
