@@ -32,7 +32,7 @@
           - if @user.birth_date
             %tr
               %td Birth Date
-              %td= @user.birth_date.strftime('%d %B %y')
+              %td= @user.birthday
           %tr
             %td Faculty
             %td= @user.faculty
@@ -59,7 +59,7 @@
           - @projects.each do |project|
             %tr
               %td= project.name
-              %td= project.created_at.localtime.strftime('%d %B %Y %H:%M:%S')
+              %td= project.date_created
               %td= project.role
               %td
                 - if project.is_creator

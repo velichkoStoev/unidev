@@ -4,4 +4,8 @@ class Project < ActiveRecord::Base
 
   validates :name, presence: true
   validates :information, presence: true
+
+  def date_created
+    created_at.localtime.strftime('%d %B %Y')
+  end
 end
