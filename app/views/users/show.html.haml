@@ -16,7 +16,9 @@
       .panel.panel-info
         .panel-heading
           %h4 Skills
-        .panel-body
+        %ul.list-group
+        - @user.skills.each do |skill|
+          %li.list-group-item= skill.name
   %hr
   .row
     .col-md-4
@@ -56,12 +58,9 @@
               ?
           - @projects.each do |project|
             %tr
-              %td
-                = project.name
-              %td
-                = project.created_at.localtime.strftime('%d %B %Y %H:%M:%S')
-              %td
-                = project.role
+              %td= project.name
+              %td= project.created_at.localtime.strftime('%d %B %Y %H:%M:%S')
+              %td= project.role
               %td
                 - if project.is_creator
                   Yes
