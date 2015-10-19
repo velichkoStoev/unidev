@@ -11,6 +11,7 @@
         = link_to 'UniDev', root_path, class: 'navbar-brand'
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
+            %li= link_to 'Dashboard', dashboard_path
             %li.dropdown
               %a.dropdown-toggle{ "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: '#', role: 'button' }
                 Profile
