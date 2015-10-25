@@ -1,0 +1,15 @@
+.container
+  %h2 Edit profile
+  .row
+    .col-md-4
+      .panel.panel-danger
+        .panel-heading Settings
+        %ul.list-group
+          = link_to 'General Settings', edit_user_registration_path, class: 'list-group-item'
+          = link_to 'Skills', user_skills_path(current_user), class: 'list-group-item'
+    .col-md-4
+      .panel.panel-info
+        .panel-heading My skills
+        %ul.list-group
+          - @skills.each do |skill|
+            %li.list-group-item= skill.name

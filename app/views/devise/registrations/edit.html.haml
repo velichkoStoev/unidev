@@ -1,12 +1,12 @@
 .container
-  %h2 Edit #{resource_name.to_s.humanize}
+  %h2 Edit profile
   .row
     .col-md-4
-      .panel.panel-info
-        .panel-heading Panel heading
+      .panel.panel-danger
+        .panel-heading Setting
         %ul.list-group
-          %a.list-group-item{href: ''} General Settings
-          %a.list-group-item Skills
+          = link_to 'General Settings', edit_user_registration_path, class: 'list-group-item'
+          = link_to 'Skills', user_skills_path(current_user), class: 'list-group-item'
     .col-md-4
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification
