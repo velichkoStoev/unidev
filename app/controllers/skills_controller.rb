@@ -19,7 +19,7 @@ class SkillsController < ApplicationController
           create_user_skill
           format.js
         else
-          format.js
+          format.js { render 'create_error' }
         end
       end
     end
