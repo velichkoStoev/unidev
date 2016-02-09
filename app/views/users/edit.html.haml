@@ -14,7 +14,9 @@
           - @skills.each do |skill|
             %li.list-group-item= skill.name
       %h3 Add new skill
-      = simple_form_for @new_skill, url: user_skills_path, remote: true do |f|
+      = simple_form_for @new_skill, url: user_skills_path(current_user), remote: true do |f|
         = f.input :name, placeholder: 'Add your skill name here!', required: true, label: false
         = f.button :submit, 'Go!'
-      %p#success Successfully added!
+      %br
+      .alert.alert-success#success Successfully added!
+      .alert.alert-warning#error
