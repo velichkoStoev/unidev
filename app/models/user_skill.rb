@@ -4,4 +4,6 @@ class UserSkill < ActiveRecord::Base
 
   validates :user, presence: true
   validates :skill, presence: true
+
+  validates :user_id, uniqueness: { scope: :skill_id }
 end
