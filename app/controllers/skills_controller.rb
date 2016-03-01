@@ -1,6 +1,9 @@
 class SkillsController < ApplicationController
   def create
-    @skill = current_user.skills.create!(skill_params)
+    @skill = Skill.where(name: skill_params[:name]).first
+    @skill = Skill.create!(name: skill_params[:name]) unless @skill
+    UserSkill.create!(user: current_user, skill: @skill)
+
     respond_to { |format| format.js }
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|
@@ -11,6 +14,8 @@ class SkillsController < ApplicationController
   private
 
   def skill_params
-    params.require(:skill).permit(:name)
+    skill_params = params.require(:skill).permit(:name)
+    skill_params[:name].strip!
+    skill_params
   end
 end
