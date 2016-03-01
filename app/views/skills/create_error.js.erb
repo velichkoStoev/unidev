@@ -1,10 +1,10 @@
 var skill_input = $('#skill_name').val();
 var message, errorDiv;
 
-if(!skill_input || skill_input.length === 0){
+if(!skill_input || skill_input.trim().length === 0){
   message = 'Please, enter the name of your skill!';
 }else{
-  message = 'You have already have this skill!';
+  message = 'You already have this skill!';
 }
 
 $("#error").text(message).show().delay(2000).fadeOut();
