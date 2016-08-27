@@ -11,6 +11,12 @@ class SkillsController < ApplicationController
     end
   end
 
+  def destroy
+    @skill_id = params[:id]
+    current_user.skills.where(id: @skill_id).destroy_all
+    respond_to { |format| format.js }
+  end
+
   private
 
   def skill_params
