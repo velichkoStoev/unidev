@@ -1,5 +1,5 @@
-$(".user-skills").append("<li class='list-group-item'><%= @skill.name %></li>");
+$(".user-skills").append("<%= j render 'skills/partials/skill_list_item', skill: @skill %>")
 
-$("#success").text("The skill was added successfully!").s.show().delay(2000).fadeOut();
+$("#success").text("The skill was added successfully!").show().delay(2000).fadeOut();
 
 $('#skill_name').val("");

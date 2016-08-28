@@ -12,18 +12,11 @@
         .panel-heading My skills
         %ul.list-group.user-skills
           - @skills.each do |skill|
-            %li.list-group-item{id: "skill_#{skill.id}"}
-              .btn-toolbar
-                %span= skill.name
-                -# %a.btn.btn-default.btn-xs.pull-right{ title: 'Edit' }
-                -#   %span.glyphicon.glyphicon-pencil
-                = link_to user_skill_path(current_user.id, skill.id), class: 'btn btn-danger btn-xs pull-right', remote: true, method: :delete do
-                  Delete
-                  %span.glyphicon.glyphicon-remove
+            = render 'skills/partials/skill_list_item', skill: skill
       %h3 Add new skill
       = simple_form_for @new_skill, url: user_skills_path(current_user), remote: true do |f|
         = f.input :name, placeholder: 'Add your skill name here!', required: true, label: false
-        = f.button :submit, 'Go!'
+        = f.button :submit, 'Add'
       %br
       .alert.alert-success#success
       .alert.alert-warning#error

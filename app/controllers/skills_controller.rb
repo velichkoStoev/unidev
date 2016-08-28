@@ -1,4 +1,6 @@
 class SkillsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @skill = Skill.where(name: skill_params[:name]).first
     @skill = Skill.create!(name: skill_params[:name]) unless @skill
