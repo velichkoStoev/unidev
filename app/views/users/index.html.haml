@@ -1,0 +1,20 @@
+.container-fluid
+  %hr
+  .container-fluid
+    .row
+      .col-md-12
+        .panel.panel-info
+          .panel-heading
+            %h3 Users
+          %table.table.table-bordered
+            %tr
+              %th Name
+              %th E-mail
+              %th Faculty
+              %th About
+            - @users.each do |user|
+              %tr
+                %td= link_to  user.full_name, user_path(user.id)
+                %td= user.email
+                %td= user.faculty
+                %td= user.about_me

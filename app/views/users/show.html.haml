@@ -1,5 +1,7 @@
 .container
   %h1= @user.full_name
+  -if user_same_as_current?
+    .span= link_to "(Edit profile)", edit_user_registration_path
   %hr
   .row
     .col-md-4

@@ -4,5 +4,4 @@ class ProjectParticipation < ActiveRecord::Base
 
   validates :project, presence: true
   validates :user, presence: true
-  validates :is_creator, presence: true
 end
