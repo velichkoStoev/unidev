@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :skills, only: [:create, :destroy]
+    resources :projects, except: [:show], controller: 'project_participations'
   end
 
   resources :projects, only: [:index, :show]
