@@ -1,0 +1,24 @@
+.container
+  %h2 Edit profile
+  .row
+    .col-md-4
+      .panel.panel-danger
+        .panel-heading Settings
+        %ul.list-group
+          = link_to 'General Settings', edit_user_registration_path, class: 'list-group-item'
+          = link_to 'Skills', edit_user_path(current_user), class: 'list-group-item'
+          = link_to 'Projects', user_projects_path(current_user), class: 'list-group-item'
+    .col-md-8
+      .panel.panel-info
+        .panel-heading My projects
+        %table.table.table-bordered
+          %tr
+            %th Project name
+            %th Information
+          - @projects.each do |project|
+            %tr
+              %td
+                = project.name
+                = link_to "(edit)", edit_user_project_path(current_user.id, project.id)
+              %td= project.information
+      =link_to 'New project', new_user_project_path(current_user.id), class: 'btn btn-default'

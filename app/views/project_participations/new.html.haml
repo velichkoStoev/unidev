@@ -1,0 +1,6 @@
+.container
+  %h2 New project
+  = simple_form_for @project, url: user_projects_path, method: :post do |f|
+    = f.input :name
+    = f.input :information
+    = f.button :submit, 'Add'

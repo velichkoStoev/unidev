@@ -2,4 +2,6 @@
   %hr
   %h1= @project.name
   %p= @project.information
-  %p= @project.creator.full_name
+  %p
+    By
+    = @project.creator.full_name

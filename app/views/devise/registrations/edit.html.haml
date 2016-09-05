@@ -7,6 +7,7 @@
         %ul.list-group
           = link_to 'General Settings', edit_user_registration_path, class: 'list-group-item'
           = link_to 'Skills', edit_user_path(current_user), class: 'list-group-item'
+          = link_to 'Projects', user_projects_path(current_user), class: 'list-group-item'
     .col-md-4
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification

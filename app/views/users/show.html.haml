@@ -58,19 +58,21 @@
         %table.table.table-bordered
           %tr
             %th Project name
-            %th Date created
-            %th Role
+            %th Project information
+            %th Created
+            %th Last updated
             %th
               Started by
               = @user.first_name
               ?
           - @projects.each do |project|
             %tr
-              %td= project.name
+              %td= link_to project.name, project
+              %td= project.information
               %td= project.date_created
-              %td= project.role
+              %td= project.date_updated
               %td
-                - if project.is_creator
+                - if project.creator_id == current_user.id
                   Yes
                 - else
                   No
