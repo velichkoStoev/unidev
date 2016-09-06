@@ -39,10 +39,6 @@ class ProjectParticipationsController < ApplicationController
     redirect_to user_projects_path(params[:user_id])
   end
 
-  def cancel_participation
-    byebug
-  end
-
   private
 
   def project_params
