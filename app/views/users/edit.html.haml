@@ -1,13 +1,14 @@
 .container
-  %h2 Edit profile
+  %h2 Control Panel
   .row
     .col-md-4
       .panel.panel-danger
-        .panel-heading Settings
+        .panel-heading Panels
         %ul.list-group
           = link_to 'General Settings', edit_user_registration_path, class: 'list-group-item'
           = link_to 'Skills', edit_user_path(current_user), class: 'list-group-item'
           = link_to 'Projects', user_projects_path(current_user), class: 'list-group-item'
+          = link_to 'Announcements', user_announcements_path(current_user), class: 'list-group-item'
     .col-md-4
       .panel.panel-info
         .panel-heading My skills

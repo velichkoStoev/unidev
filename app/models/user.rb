@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :created_projects, foreign_key: :creator_id, class_name: 'Project'
   has_many :user_skills
   has_many :skills, through: :user_skills
+  has_many :announcements, dependent: :destroy
 
   attr_accessor :delete_avatar
 

@@ -1,0 +1,16 @@
+.container-fluid
+  %hr
+  .container-fluid
+    .row
+      .col-md-12
+        .panel.panel-info
+          .panel-heading
+            %h3 Announcements
+          %table.table.table-bordered
+            %tr
+              %th Text
+              %th Created by
+            - @announcements.each do |announcement|
+              %tr
+                %td= announcement.text
+                %td= link_to announcement.user.full_name, user_path(announcement.user.id)

@@ -11,15 +11,16 @@
           = link_to 'Announcements', user_announcements_path(current_user), class: 'list-group-item'
     .col-md-8
       .panel.panel-info
-        .panel-heading My projects
+        .panel-heading My announcements
         %table.table.table-bordered
           %tr
-            %th Project name
-            %th Information
-          - @projects.each do |project|
+            %th Text
+            %th Project
+          - @announcements.each do |announcement|
             %tr
               %td
-                = project.name
-                = link_to "(edit)", edit_user_project_path(current_user.id, project.id)
-              %td= project.information
-      =link_to 'New project', new_user_project_path(current_user.id), class: 'btn btn-default'
+                = truncate(announcement.text, length: 25)
+                = link_to '(edit)', edit_user_announcement_path(current_user.id, announcement.id)
+              %td
+                = link_to announcement.project.name, announcement.project
+      =link_to 'New announcement', new_user_announcement_path(current_user.id), class: 'btn btn-default'

@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160903222833) do
+ActiveRecord::Schema.define(version: 20160906105831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "announcements", force: :cascade do |t|
+    t.text    "text"
+    t.integer "user_id"
+    t.integer "project_id"
+  end
+
+  add_index "announcements", ["project_id"], name: "index_announcements_on_project_id", using: :btree
+  add_index "announcements", ["user_id"], name: "index_announcements_on_user_id", using: :btree
 
   create_table "project_participations", force: :cascade do |t|
     t.integer  "project_id"
@@ -81,5 +90,7 @@ ActiveRecord::Schema.define(version: 20160903222833) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "announcements", "projects"
+  add_foreign_key "announcements", "users"
   add_foreign_key "projects", "users", column: "creator_id"
 end

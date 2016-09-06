@@ -48,7 +48,14 @@
       .panel.panel-info
         .panel-heading
           %h4 Announcements
-        .panel-body
+        %table.table.table-bordered
+          %tr
+            %th Text
+            %th Project
+          - @announcements.each do |announcement|
+            %tr
+              %td= link_to truncate(announcement.text, length: 24), announcement
+              %td= link_to announcement.project.name, announcement.project
   %hr
   .row
     .col-md-12

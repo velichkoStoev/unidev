@@ -1,0 +1,6 @@
+.container
+  %h2 New announcement
+  = simple_form_for @announcement, url: user_announcements_path, method: :post do |f|
+    = f.input :text
+    = f.input :project_id, collection: @projects, selected: @projects.first
+    = f.button :submit, 'Add'

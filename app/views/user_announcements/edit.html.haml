@@ -1,0 +1,8 @@
+.container
+  %h2 Edit announcement
+  = simple_form_for @announcement, url: user_announcement_path, method: :put do |f|
+    = f.input :text
+    = f.input :project_id, collection: @projects, selected: @announcement.project
+    = f.button :submit, 'Update'
+  %hr
+  %span= link_to 'Delete this announcement', user_announcement_path(@user.id, @announcement.id), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
