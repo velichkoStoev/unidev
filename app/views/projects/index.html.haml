@@ -2,6 +2,14 @@
   %hr
   .container-fluid
     .row
+      .col-md-4
+        .h4 Search
+        = simple_form_for :search, url: url_for(action: 'search', controller: 'projects'), method: :get, html: { class: 'form-inline' } do |f|
+          .form-group
+            = f.input :project_name, required: false, placeholder: 'Type project name here', class: 'form-control', label: false
+          = f.button :submit, 'Go!', class: 'btn btn-default'
+    %hr
+    .row
       .col-md-12
         .panel.panel-info
           .panel-heading

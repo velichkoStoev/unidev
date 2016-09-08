@@ -20,4 +20,19 @@ class UsersController < ApplicationController
     @skills = current_user.skills
     @new_skill = Skill.new
   end
+
+  def search
+    if search_params[:user_email].nil? || search_params[:user_email].empty?
+      flash[:warning] = 'Please, input something in the search field!'
+      redirect_to action: :index
+    end
+
+    @users = User.where('email ILIKE ?', "%#{search_params[:user_email]}%")
+  end
+
+  private
+
+  def search_params
+    params.require(:search).permit(:user_email)
+  end
 end

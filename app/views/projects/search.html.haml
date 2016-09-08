@@ -1,0 +1,24 @@
+.container-fluid
+  .container.row
+    %h3
+      = pluralize(@projects.count, 'result')
+      found.
+  .row
+    .col-md-12
+      .panel.panel-info
+        .panel-heading
+          %h3 Projects
+        %table.table.table-bordered
+          %tr
+            %th Project name
+            %th Project information
+            %th Created by
+            %th Created at
+            %th Last updated at
+          - @projects.each do |project|
+            %tr
+              %td= link_to  project.name, project_path(project.id)
+              %td= project.information
+              %td= link_to  project.creator.full_name, user_path(project.creator_id)
+              %td= project.date_created
+              %td= project.date_updated

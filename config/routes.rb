@@ -5,9 +5,18 @@ Rails.application.routes.draw do
     resources :skills, only: [:create, :destroy]
     resources :projects, except: [:show], controller: 'project_participations'
     resources :announcements, except: [:show], controller: 'user_announcements'
+
+    collection do
+      get 'search'
+    end
   end
 
-  resources :projects, only: [:index, :show]
+  resources :projects, only: [:index, :show] do
+    collection do
+      get 'search'
+    end
+  end
+
   resources :announcements, only: [:index, :show]
 
   get '/dashboard', to: 'pages#dashboard'
