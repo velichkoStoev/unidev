@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :faculty, presence: true
+  validates :email, presence: true,
+                    format: {
+                      with: /\b[A-Z0-9._%a-z\-]+@unidev\.com\z/,
+                      message: 'The e-mail domain must be @unidev.com'
+                    }
 
   before_validation { avatar.clear if delete_avatar == '1' }
 
