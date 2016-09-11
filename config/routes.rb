@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :skills, only: [:create, :destroy]
     resources :projects, except: [:show], controller: 'project_participations'
     resources :announcements, except: [:show], controller: 'user_announcements'
+    resources :messages, only: [:index, :new, :create, :show]
 
     collection do
       get 'search'

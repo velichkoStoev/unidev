@@ -1,0 +1,51 @@
+.container
+  %h2 Control Panel
+  .row
+    .col-md-4
+      .panel.panel-danger
+        .panel-heading Panels
+        %ul.list-group
+          = link_to 'General Settings', edit_user_registration_path, class: 'list-group-item'
+          = link_to 'Skills', edit_user_path(current_user), class: 'list-group-item'
+          = link_to 'Projects', user_projects_path(current_user), class: 'list-group-item'
+          = link_to 'Announcements', user_announcements_path(current_user), class: 'list-group-item'
+          = link_to 'Messages', user_messages_path(current_user), class: 'list-group-item'
+    .col-md-8
+      .panel.panel-info
+        .panel-heading Inbox
+        %table.table.table-bordered
+          %tr
+            %th Received
+            %th Title
+            %th Body
+            %th From
+          - @received_messages.each do |message|
+            %tr
+              %td.col-md-3
+                = message.date_created
+              %td.col-md-3
+                = link_to message.title, user_message_path(current_user.id, message.id), remote: true
+              %td.col-md-3
+                = truncate(message.body, length: 24)
+              %td.col-md-3
+                = link_to message.sender.full_name, user_path(message.sender)
+      .panel.panel-info
+        .panel-heading Sent messagess
+        %table.table.table-bordered
+          %tr
+            %th Sent
+            %th Title
+            %th Body
+            %th To
+          - @sent_messages.each do |message|
+            %tr
+              %td.col-md-3
+                = message.date_created
+              %td.col-md-3
+                = link_to message.title, user_message_path(current_user.id, message.id), remote: true
+              %td.col-md-3
+                = truncate(message.body, length: 24)
+              %td.col-md-3
+                = link_to message.receiver.full_name, user_path(message.receiver)
+      = link_to 'Compose new message', new_user_message_path(current_user.id), class: 'btn btn-default', remote: true
+      .message

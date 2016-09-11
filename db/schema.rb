@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906105831) do
+ActiveRecord::Schema.define(version: 20160911173821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 20160906105831) do
 
   add_index "announcements", ["project_id"], name: "index_announcements_on_project_id", using: :btree
   add_index "announcements", ["user_id"], name: "index_announcements_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title",                       null: false
+    t.text     "body",                        null: false
+    t.boolean  "is_request",  default: false, null: false
+    t.boolean  "is_read",     default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "sender_id",                   null: false
+    t.integer  "receiver_id",                 null: false
+  end
+
+  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "project_participations", force: :cascade do |t|
     t.integer  "project_id"
@@ -92,5 +106,7 @@ ActiveRecord::Schema.define(version: 20160906105831) do
 
   add_foreign_key "announcements", "projects"
   add_foreign_key "announcements", "users"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "projects", "users", column: "creator_id"
 end
