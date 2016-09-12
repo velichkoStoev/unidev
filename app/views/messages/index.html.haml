@@ -11,6 +11,7 @@
           = link_to 'Announcements', user_announcements_path(current_user), class: 'list-group-item'
           = link_to 'Messages', user_messages_path(current_user), class: 'list-group-item'
     .col-md-8
+      .span Unread messages are colored in yellow.
       .panel.panel-info
         .panel-heading Inbox
         %table.table.table-bordered
@@ -20,15 +21,26 @@
             %th Body
             %th From
           - @received_messages.each do |message|
-            %tr
-              %td.col-md-3
-                = message.date_created
-              %td.col-md-3
-                = link_to message.title, user_message_path(current_user.id, message.id), remote: true
-              %td.col-md-3
-                = truncate(message.body, length: 24)
-              %td.col-md-3
-                = link_to message.sender.full_name, user_path(message.sender)
+            - if message.is_read
+              %tr
+                %td.col-md-3
+                  = message.date_created
+                %td.col-md-3
+                  = link_to message.title, user_message_path(current_user.id, message.id), remote: true
+                %td.col-md-3
+                  = truncate(message.body, length: 24)
+                %td.col-md-3
+                  = link_to message.sender.full_name, user_path(message.sender)
+            - else
+              %tr.warning{id: "message_#{message.id}"}
+                %td.col-md-3
+                  = message.date_created
+                %td.col-md-3
+                  = link_to message.title, user_message_path(current_user.id, message.id), remote: true
+                %td.col-md-3
+                  = truncate(message.body, length: 24)
+                %td.col-md-3
+                  = link_to message.sender.full_name, user_path(message.sender)
       .panel.panel-info
         .panel-heading Sent messagess
         %table.table.table-bordered

@@ -1,2 +1,3 @@
+$("#message_<%= @message.id %>").removeClass();
 $(".message").empty();
 $(".message").append("<%= j render 'messages/partials/show_message', message: @message %>");

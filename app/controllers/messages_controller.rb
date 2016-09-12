@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    byebug
     message_data = message_params.merge!(sender: current_user)
     Message.create!(message_data)
     flash[:notice] = 'Message was successfully sent!'
@@ -22,7 +21,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find_by_id(params[:id])
-    @message.update!(is_read: true)
+    @message.update!(is_read: true) if @message.receiver_id == current_user.id
     respond_to { |format| format.js }
   end
 

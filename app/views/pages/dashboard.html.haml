@@ -1,1 +1,35 @@
-%h1 Welcome, #{current_user.first_name}
+.container
+  .row
+    %h1 Welcome, #{current_user.first_name} !
+  - if @unread_messages_count != 0
+    .alert.alert-warning
+      .p You have #{pluralize(@unread_messages_count, 'unread message')}!
+      =link_to 'View inbox', user_messages_path(current_user)
+  %hr
+  .row
+    .panel.panel-info
+      .panel-heading
+        %h3 Projects
+      %table.table.table-bordered
+        %tr
+          %th Project name
+          %th Project information
+          %th Created at
+          %th Last updated at
+        - @projects.each do |project|
+          %tr
+            %td= link_to  project.name, project_path(project.id)
+            %td= project.information
+            %td= project.date_created
+            %td= project.date_updated
+  %hr
+  .row
+    .panel.panel-info
+      .panel-heading
+        %h3 Announcements
+      %table.table.table-bordered
+        %tr
+          %th Text
+        - @announcements.each do |announcement|
+          %tr
+            %td= announcement.text
