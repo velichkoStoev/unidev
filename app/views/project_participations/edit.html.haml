@@ -14,4 +14,4 @@
     %p= @project.creator.full_name
     %hr
     %p You are not the author of the project, so you can't edit it. But you can cancel your participation by clicking the button below.
-    =link_to 'Cancel participation', '#'
+    =link_to 'Cancel participation', user_cancel_path(current_user.id, project_id: @project.id), method: :post

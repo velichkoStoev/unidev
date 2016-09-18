@@ -39,6 +39,12 @@ class ProjectParticipationsController < ApplicationController
     redirect_to user_projects_path(params[:user_id])
   end
 
+  def cancel
+    ProjectParticipation.where(user_id: params[:user_id], project_id: params[:project_id]).delete_all
+    flash[:notice] = 'You have successfully cancelled your participation!'
+    redirect_to user_projects_path(params[:user_id])
+  end
+
   private
 
   def project_params

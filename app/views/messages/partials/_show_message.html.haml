@@ -9,3 +9,11 @@
       .p Body
       .list-group-item
         = @message.body
+- if @message.is_request && current_user.id == @message.receiver_id && !@message.is_request_handled
+  .btn-group
+    =link_to 'Approve', user_approve_request_path(current_user.id, receiver_id: @message.sender_id,
+                                                                   project_id: @message.project_id,
+                                                                   request_message_id: @message.id), class: 'btn btn-success', method: :post
+    =link_to 'Decline', user_decline_request_path(current_user.id, receiver_id: @message.sender_id),
+                                                                   project_id: @message.project_id,
+                                                                   request_message_id: @message.id, class: 'btn btn-danger', method: :post

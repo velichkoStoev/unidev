@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     resources :announcements, except: [:show], controller: 'user_announcements'
     resources :messages, only: [:index, :new, :create, :show]
 
+    match '/messages/new_request' => 'messages#new_request', via: :post, as: 'new_request'
+    match '/messages/approve_request' => 'messages#approve_request', via: :post, as: 'approve_request'
+    match '/messages/decline_request' => 'messages#decline_request', via: :post, as: 'decline_request'
+
+    match '/projects/cancel' => 'project_participations#cancel', via: :post, as: 'cancel'
+
     collection do
       get 'search'
     end

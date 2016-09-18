@@ -8,6 +8,10 @@ module ApplicationHelper
   end
 
   def user_project_creator?
-    @project.creator.id = @user.id
+    @project.creator.id == @user.id
+  end
+
+  def current_user_project_creator?
+    @project.creator.id == current_user.id
   end
 end
