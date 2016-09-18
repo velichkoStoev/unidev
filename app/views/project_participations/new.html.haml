@@ -3,4 +3,5 @@
   = simple_form_for @project, url: user_projects_path, method: :post do |f|
     = f.input :name
     = f.input :information
+    = f.input :repository_link
     = f.button :submit, 'Add'

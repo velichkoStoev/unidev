@@ -21,6 +21,7 @@
               %th Created by
               %th Created at
               %th Last updated at
+              %th Repository_link
             - @projects.each do |project|
               %tr
                 %td= link_to  project.name, project_path(project.id)
@@ -28,3 +29,5 @@
                 %td= link_to  project.creator.full_name, user_path(project.creator_id)
                 %td= project.date_created
                 %td= project.date_updated
+                %td
+                  =link_to project.repository_url, project.repository_link

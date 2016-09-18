@@ -4,6 +4,7 @@
     = simple_form_for @project, url: user_project_path, method: :put do |f|
       = f.input :name
       = f.input :information
+      = f.input :repository_link
       = f.button :submit, 'Update'
     %hr
     %span= link_to 'Delete this project', user_project_path(@user.id, @project.id), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'

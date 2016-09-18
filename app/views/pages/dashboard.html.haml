@@ -16,12 +16,15 @@
           %th Project information
           %th Created at
           %th Last updated at
+          %th Repository link
         - @projects.each do |project|
           %tr
             %td= link_to  project.name, project_path(project.id)
             %td= project.information
             %td= project.date_created
             %td= project.date_updated
+            %td
+              =link_to project.repository_url, project.repository_link
   %hr
   .row
     .panel.panel-info
