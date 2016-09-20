@@ -12,10 +12,14 @@ class ProjectParticipationsController < ApplicationController
 
   def create
     project_data = project_params.merge!(creator: current_user)
-    current_user.projects.create(project_data)
+    @project = current_user.projects.create(project_data)
 
-    flash[:notice] = 'Project successfully created!'
-    redirect_to user_projects_path(current_user.id)
+    if @project.save
+      flash[:notice] = 'Project successfully created!'
+      redirect_to user_projects_path(current_user.id)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -25,10 +29,12 @@ class ProjectParticipationsController < ApplicationController
 
   def update
     @project = Project.find_by_id(params[:id])
-    @project.update(project_params)
-
-    flash[:notice] = 'Project successfully updated!'
-    redirect_to user_projects_path(current_user.id)
+    if @project.update(project_params)
+      flash[:notice] = 'Project successfully updated!'
+      redirect_to user_projects_path(current_user.id)
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -48,6 +54,6 @@ class ProjectParticipationsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :information)
+    params.require(:project).permit(:name, :information, :repository_link)
   end
 end

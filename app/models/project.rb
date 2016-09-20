@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   validates :name, presence: true
   validates :information, presence: true
   validates :creator, presence: true
-  validates_format_of :repository_link, with: URI.regexp(%w(http https))
+  validates_format_of :repository_link, with: URI.regexp(%w(http https)), allow_blank: true
 
   def date_created
     created_at.localtime.strftime('%d %B %Y')

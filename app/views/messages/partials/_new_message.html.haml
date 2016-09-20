@@ -1,6 +1,6 @@
 .col-md-4
   %hr
-  = simple_form_for @message, url: user_messages_path, method: :post do |f|
+  = simple_form_for @message, url: user_messages_path, method: :post, remote: true do |f|
     = f.input :title
     = f.input :body
     = f.input :receiver_id, collection: @users, label_method: :full_name, selected: @users.first

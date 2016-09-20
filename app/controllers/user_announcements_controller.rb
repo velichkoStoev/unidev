@@ -13,10 +13,15 @@ class UserAnnouncementsController < ApplicationController
   end
 
   def create
-    current_user.announcements.create!(announcement_params)
+    @announcement = current_user.announcements.build(announcement_params)
+    @projects = current_user.projects
 
-    flash[:notice] = 'Announcement successfully created!'
-    redirect_to user_announcements_path(current_user.id)
+    if @announcement.save
+      flash[:notice] = 'Announcement successfully created!'
+      redirect_to user_announcements_path(current_user.id)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -27,10 +32,15 @@ class UserAnnouncementsController < ApplicationController
 
   def update
     @announcement = Announcement.find_by_id(params[:id])
-    @announcement.update(announcement_params)
+    @projects = current_user.projects
+    @user = current_user
 
-    flash[:notice] = 'Announcement successfully updated!'
-    redirect_to user_announcements_path(current_user.id)
+    if @announcement.update(announcement_params)
+      flash[:notice] = 'Announcement successfully updated!'
+      redirect_to user_announcements_path(current_user.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

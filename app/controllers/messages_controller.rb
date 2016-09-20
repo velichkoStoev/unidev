@@ -14,9 +14,16 @@ class MessagesController < ApplicationController
 
   def create
     message_data = message_params.merge!(sender: current_user)
-    Message.create!(message_data)
-    flash[:notice] = 'Message was successfully sent!'
-    redirect_to action: :index
+    @message = Message.new(message_data)
+    @users = User.where.not(id: current_user.id)
+    if @message.save
+      flash[:notice] = 'Message was successfully sent!'
+      redirect_to action: :index
+    else
+      respond_to do |format|
+        format.js { render 'new' }
+      end
+    end
   end
 
   def show
