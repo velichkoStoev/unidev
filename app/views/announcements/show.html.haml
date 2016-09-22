@@ -1,0 +1,11 @@
+.container
+  %hr
+  %h1= @announcement.text
+  %p= @project.name
+  %p
+    By
+    = @project.creator.full_name
+  .row
+    -unless current_user_project_creator?
+      =link_to 'Send participation request', user_new_request_path(current_user.id, receiver_id: @project.creator.id,
+                                                                                    project_id: @project.id), method: :post, class: 'btn btn-default'
