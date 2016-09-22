@@ -3,7 +3,6 @@
     %h1 Welcome to UniDev!
     %p Place for ideas, development and teamwork!
     %p
-      = link_to 'Learn more', '#', class: 'btn btn-primary btn-lg'
       - unless user_signed_in?
         = link_to 'Sign me up right now!', new_user_registration_path, class: 'btn btn-primary btn-lg'
 .container
@@ -16,7 +15,7 @@
       .p Because programmers with similar interests should work together - you could learn A TON from the others, you could build something beautiful and you could, hmm ... Have fun, I guess? :)
     .col-md-4
       .h2 How?
-      .p Just click 'Register' link up there, tell us who you are and start that sh*t!
+      .p Just click 'Register' link up there, tell us who you are and start!
   %hr
   .row
     .col-md-4
