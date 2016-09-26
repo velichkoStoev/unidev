@@ -18,7 +18,8 @@ class MessagesController < ApplicationController
     @users = User.where.not(id: current_user.id)
     if @message.save
       flash[:notice] = 'Message was successfully sent!'
-      redirect_to action: :index
+      flash.keep(:notice)
+      render js: "window.location = '#{user_messages_path}'"
     else
       respond_to do |format|
         format.js { render 'new' }

@@ -14,6 +14,6 @@
     =link_to 'Approve', user_approve_request_path(current_user.id, receiver_id: @message.sender_id,
                                                                    project_id: @message.project_id,
                                                                    request_message_id: @message.id), class: 'btn btn-success', method: :post
-    =link_to 'Decline', user_decline_request_path(current_user.id, receiver_id: @message.sender_id),
+    =link_to 'Decline', user_decline_request_path(current_user.id, receiver_id: @message.sender_id,
                                                                    project_id: @message.project_id,
-                                                                   request_message_id: @message.id, class: 'btn btn-danger', method: :post
+                                                                   request_message_id: @message.id), class: 'btn btn-danger', method: :post
