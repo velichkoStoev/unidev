@@ -31,4 +31,6 @@ config/secrets.yml
 *.bowerrc
 bower.json
 
-# Ignore pow environment settings
+*.sublime-project
+*.sublime-workspace
+
