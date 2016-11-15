@@ -43,6 +43,9 @@ group :development, :test do
   gem 'rails-erd', '~> 1.5'
   gem 'rubocop', '~> 0.34.2'
   gem 'rspec-rails', '~> 3.5'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+  gem 'factory_girl_rails', '~> 4.7'
+  gem 'timecop', '~> 0.8.1'
 end
 
 group :development do
