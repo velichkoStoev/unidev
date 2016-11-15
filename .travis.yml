@@ -11,4 +11,4 @@ services:
 addons:
   postgresql: "9.3"
 before_script:
-  - psql -c 'create database unidev_test;' -U unidev
+  - psql -c 'create database unidev_test;' -U postgres
