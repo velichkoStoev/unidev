@@ -9,4 +9,5 @@ services:
 addons:
   postgresql: "9.3"
 before_script:
+  - psql -c "CREATE USER unidev WITH PASSWORD 'unidev';" -U postgres
   - psql -c 'create database unidev;' -U postgres
