@@ -3,11 +3,13 @@ rvm:
   - 2.2.1
 env:
   - RAILS_ENV=test
-  - RAILS_VERSION='~> 4.2.4'
+branches:
+    only:
+      - master
 services:
   - postgresql
 addons:
   postgresql: "9.3"
 before_script:
   - psql -c "CREATE USER unidev WITH PASSWORD 'unidev';" -U postgres
-  - psql -c 'create database unidev_test;' -U postgres
+  - psql -c 'create database unidev_test;' -U unidev
