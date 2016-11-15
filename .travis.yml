@@ -15,4 +15,4 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec
 before_script:
-  - psql -c "CREATE USER unidev WITH PASSWORD 'unidev'; SUPERUSER CREATEDB" -U postgres
+  - psql -c "CREATE USER unidev WITH PASSWORD 'unidev' SUPERUSER CREATEDB;" -U postgres
