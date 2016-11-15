@@ -8,6 +8,6 @@ class Message < ActiveRecord::Base
   validates :receiver_id, presence: true
 
   def date_created
-    created_at.strftime('%H:%M, %d.%b.%Y ')
+    created_at.strftime('%H:%M, %d.%b.%Y')
   end
 end
