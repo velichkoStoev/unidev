@@ -12,9 +12,9 @@ describe Message do
   it { expect(subject).to validate_presence_of(:receiver_id) }
 
   describe 'Timestamp stringify methods' do
-    let(:stringified_timestamp) { '10:00, 01.Jan.2016' }
+    let(:stringified_timestamp) { '12:00, 01.Jan.2016' }
 
-    before(:all) { Timecop.freeze(Time.local(2016, 1, 1, 12)) }
+    before(:all) { Timecop.freeze(Time.utc(2016, 1, 1, 12)) }
     after(:all) { Timecop.return }
 
     describe '#date_created' do
