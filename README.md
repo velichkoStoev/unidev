@@ -1,5 +1,7 @@
 #UniDev
 
+[![Build Status](https://travis-ci.org/velichkoStoev/unidev.svg?branch=master)](https://travis-ci.org/velichkoStoev/unidev)  
+
 ##Setup 
 ###Requirements
 - Ruby 2.2.1
