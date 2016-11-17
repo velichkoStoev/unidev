@@ -34,9 +34,30 @@ class MessagesController < ApplicationController
   end
 
   def new_request
+    Message.create!(new_request_message_data)
+    flash[:notice] = 'Your request was successfully sent!'
+    redirect_to action: :index
+  end
+
+  def approve_request
+    respond_to_request(:approve)
+    ProjectParticipation.create!(project_id: params[:project_id], user_id: params[:receiver_id])
+    flash[:notice] = 'Your approval was successfully sent!'
+    redirect_to action: :index
+  end
+
+  def decline_request
+    respond_to_request(:decline)
+    flash[:notice] = 'Your decline was successfully sent!'
+    redirect_to action: :index
+  end
+
+  private
+
+  def new_request_message_data
     project = Project.find_by_id(params[:project_id])
 
-    message_data = {
+    {
       sender_id: current_user.id,
       receiver_id: params[:receiver_id],
       is_request: true,
@@ -44,42 +65,23 @@ class MessagesController < ApplicationController
       title: 'New participation request',
       body: "Hi, I'm #{current_user.full_name}, and I want to join your project #{project.name}. Is it okay with you?"
     }
-
-    Message.create!(message_data)
-    flash[:notice] = 'Your request was successfully sent!'
-    redirect_to action: :index
   end
 
-  def approve_request
-    message_data = {
-      sender_id: current_user.id,
-      receiver_id: params[:receiver_id],
-      title: 'Approved request!',
-      body: 'Congrats, your request has been approved!'
+  def respond_to_request(request_type)
+    Message.create!(request_response_content(request_type))
+    Message.find_by_id(params[:request_message_id]).update!(is_request_handled: true)
+  end
+
+  def request_response_content(response_type)
+    user_content = { sender_id: current_user.id, receiver_id: params[:receiver_id] }
+
+    text_content = {
+      approve: { title: 'Approved request!', body: 'Congrats, your request has been approved!' },
+      decline: { title: 'Approved request!', body: 'Congrats, your request has been approved!' }
     }
 
-    Message.create!(message_data)
-    Message.find_by_id(params[:request_message_id]).update!(is_request_handled: true)
-    ProjectParticipation.create!(project_id: params[:project_id], user_id: params[:receiver_id])
-    flash[:notice] = 'Your approval was successfully sent!'
-    redirect_to action: :index
+    user_content.merge(text_content[response_type])
   end
-
-  def decline_request
-    message_data = {
-      sender_id: current_user.id,
-      receiver_id: params[:receiver_id],
-      title: 'Declined request!',
-      body: "Unfortunately, #{current_user.full_name} doesn't want you in his project."
-    }
-
-    Message.create!(message_data)
-    Message.find_by_id(params[:request_message_id]).update!(is_request_handled: true)
-    flash[:notice] = 'Your decline was successfully sent!'
-    redirect_to action: :index
-  end
-
-  private
 
   def message_params
     params.require(:message).permit(:receiver_id, :title, :body)
