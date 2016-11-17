@@ -16,7 +16,7 @@
           %th Project information
           %th Created at
           %th Last updated at
-          %th Repository link
+          %th Repository Url
         - @projects.each do |project|
           %tr
             %td= link_to  project.name, project_path(project.id)
@@ -35,4 +35,4 @@
           %th Text
         - @announcements.each do |announcement|
           %tr
-            %td= announcement.text
+            %td= link_to truncate(announcement.text, length: 24), announcement_path(announcement.id)
