@@ -60,4 +60,5 @@
               %td.col-md-3
                 = link_to message.receiver.full_name, user_path(message.receiver)
       = link_to 'Compose new message', new_user_message_path(current_user.id), class: 'btn btn-default', remote: true
+      %hr
       .message
