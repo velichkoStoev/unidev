@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, except: :home
+  before_action :authenticate_user!
 
   def index
     @sent_messages = Message.where(sender_id: current_user.id)
