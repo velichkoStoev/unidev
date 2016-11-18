@@ -17,6 +17,7 @@ I have installed Ruby and Rails using [RVM](https://rvm.io/) and I use [PgAdmin3
 2. Execute ```bundle install``` in order to install the gem dependencies.
 3. Create PSQL user called ```unidev``` with password ```unidev``` and execute ```rake db:setup```. 
 4. Start your Rails server with ```rails s``` or ```rails server```.
+5. Run the specs with ```bundle exec rspec```. 
 
 
 
