@@ -31,10 +31,21 @@ describe 'Messages Features' do
     scenario { expect(page).to have_link('Compose new message', href: new_user_message_path(current_user.id)) }
   end
 
-  feature 'User reads a specific message' do
-    before do
-      login_as(current_user, scope: :user)
-      visit user_messages_path(current_user.id)
-    end
-  end
+  # feature 'User reads a message' do
+  #   let!(:received_message) { FactoryGirl.create(:message, receiver: current_user) }
+
+  #   before do
+  #     login_as(current_user, scope: :user)
+  #     visit user_messages_path(current_user.id)
+  #     click_link(received_message.title)
+  #   end
+
+  #   scenario 'they see the content of the message' do
+  #     expect(page).to have_selector('.message .panel.panel-heading', text: 'Message')
+  #     expect(page).to have_selector('.container-fluid .list-group-item', text: received_message.title)
+  #     expect(page).to have_selector('.container-fluid .list-group-item', text: received_message.body)
+  #   end
+  # end
+
+  feature 'User composes a message'
 end
