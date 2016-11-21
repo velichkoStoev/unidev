@@ -1,4 +1,11 @@
 Metrics/LineLength:
   Max: 120
 Documentation:
-    Enabled: false
+  Enabled: false
+Metrics/BlockLength:
+  CountComments: false  # count full line comments?
+  Max: 25
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
