@@ -2,14 +2,15 @@ class SkillsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @skill = Skill.where(name: skill_params[:name]).first
-    @skill = Skill.create!(name: skill_params[:name]) unless @skill
-    UserSkill.create!(user: current_user, skill: @skill)
+    @skill = Skill.find_or_create_by(name: skill_params[:name])
+    current_user.skills << @skill
 
     respond_to { |format| format.js }
-  rescue ActiveRecord::RecordInvalid
+  rescue ActiveRecord::RecordInvalid => exception
+    handle_validation_error(exception)
+
     respond_to do |format|
-      format.js { render 'create_error' }
+      format.js { render 'new' }
     end
   end
 
@@ -25,5 +26,10 @@ class SkillsController < ApplicationController
     skill_params = params.require(:skill).permit(:name)
     skill_params[:name].strip!
     skill_params
+  end
+
+  def handle_validation_error(exception)
+    validation_error = exception.message.split(': ').last
+    @skill.errors.add(:name, 'You already have this skill') if validation_error == 'User has already been taken'
   end
 end
