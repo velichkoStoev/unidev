@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     end
 
     @skills = current_user.skills
-    @new_skill = Skill.new
   end
 
   def search
