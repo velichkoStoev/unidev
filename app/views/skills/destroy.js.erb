@@ -1,3 +1,6 @@
 $(".user-skills").find('#skill_<%= @skill_id %>').hide();
 
+$("#skill").empty();
+$("#skill").append("<%= j render 'skills/partials/form' %>");
+
 $("#success").text("The skill was deleted successfully!").show().delay(2000).fadeOut();

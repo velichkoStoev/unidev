@@ -1,5 +1,8 @@
 $(".user-skills").append("<%= j render 'skills/partials/skill_list_item', skill: @skill %>")
 
+$("#skill").empty();
+$("#skill").append("<%= j render 'skills/partials/form' %>");
+
 $("#success").text("The skill was added successfully!").show().delay(2000).fadeOut();
 
 $('#skill_name').val("");

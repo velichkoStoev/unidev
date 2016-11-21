@@ -16,10 +16,8 @@
         %ul.list-group.user-skills
           - @skills.each do |skill|
             = render 'skills/partials/skill_list_item', skill: skill
-      %h3 Add new skill
-      = simple_form_for @new_skill, url: user_skills_path(current_user), remote: true do |f|
-        = f.input :name, placeholder: 'Add your skill name here!', required: true, label: false
-        = f.button :submit, 'Add'
+      #skill
+        %h3 Add new skill
+        = render 'skills/partials/form'
       %br
       .alert.alert-success#success
-      .alert.alert-warning#error
