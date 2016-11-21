@@ -11,7 +11,7 @@ describe 'Announcements Features' do
 
     before do
       login_as(current_user, scope: :user)
-      visit '/announcements'
+      visit announcements_path
     end
 
     scenario 'they see a table with announcements' do
@@ -37,7 +37,7 @@ describe 'Announcements Features' do
       let!(:announcement) { FactoryGirl.create(:announcement, user: current_user, text: text_1) }
 
       before do
-        visit '/announcements'
+        visit announcements_path
         first('td a').click
       end
 
@@ -51,7 +51,7 @@ describe 'Announcements Features' do
       let!(:announcement) { FactoryGirl.create(:announcement, user: user_with_announcement, text: text_1) }
 
       before do
-        visit '/announcements'
+        visit announcements_path
         first('td a').click
       end
 
