@@ -13,8 +13,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message_data = message_params.merge!(sender: current_user)
-    @message = Message.new(message_data)
+    @message = current_user.sent_messages.build(message_params)
     @users = User.where.not(id: current_user.id)
     if @message.save
       flash[:notice] = 'Message was successfully sent!'
@@ -29,7 +28,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find_by_id(params[:id])
-    @message.update!(is_read: true) if @message.receiver_id == current_user.id
+    @message.update!(is_read: true)
     respond_to { |format| format.js }
   end
 
@@ -76,8 +75,14 @@ class MessagesController < ApplicationController
     user_content = { sender_id: current_user.id, receiver_id: params[:receiver_id] }
 
     text_content = {
-      approve: { title: 'Approved request!', body: 'Congrats, your request has been approved!' },
-      decline: { title: 'Approved request!', body: 'Congrats, your request has been approved!' }
+      approve: {
+        title: 'Approved request!',
+        body: 'Congrats, your request has been approved!'
+      },
+      decline: {
+        title: 'Declined request!',
+        body: "Unfortunately, #{current_user.full_name} doesn't want you in his project."
+      }
     }
 
     user_content.merge(text_content[response_type])
