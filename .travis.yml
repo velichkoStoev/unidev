@@ -13,6 +13,6 @@ addons:
 script:
   - bundle exec rake db:setup
   - bundle exec rake db:test:prepare
-  - bundle exec rspec spec
+  - xvfb-run -a bundle exec rspec
 before_script:
   - psql -c "CREATE USER unidev WITH PASSWORD 'unidev' SUPERUSER CREATEDB;" -U postgres
