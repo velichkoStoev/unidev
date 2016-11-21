@@ -46,7 +46,9 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
   gem 'factory_girl_rails', '~> 4.7'
   gem 'timecop', '~> 0.8.1'
-  gem 'capybara', '~> 2.10', '>= 2.10.1'
+  gem 'capybara', '< 2.8.0', '>= 2.3.0'
+  gem 'capybara-webkit', '~> 1.11', '>= 1.11.1'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
 end
 
 group :development do
