@@ -13,11 +13,12 @@ describe User do
   it { expect(subject).to have_many(:user_skills) }
   it { expect(subject).to have_many(:skills).through(:user_skills) }
   it { expect(subject).to have_many(:announcements).dependent(:destroy) }
-  it { expect(subject).to have_many(:messages).with_foreign_key(:sender_id) }
+  it { expect(subject).to have_many(:sent_messages).with_foreign_key(:sender_id).class_name('Message') }
+  it { expect(subject).to have_many(:received_messages).with_foreign_key(:receiver_id).class_name('Message') }
 
   it { expect(subject).to have_attached_file(:avatar) }
 
-  it 'validates the content type of the avatar'do
+  it 'validates the content type of the avatar' do
     expect(subject).to validate_attachment_content_type(:avatar)
       .allowing('image/png', 'image/jpeg')
   end

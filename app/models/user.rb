@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   has_many :user_skills
   has_many :skills, through: :user_skills
   has_many :announcements, dependent: :destroy
-  has_many :messages, foreign_key: :sender_id
+  has_many :sent_messages, foreign_key: :sender_id, class_name: 'Message'
+  has_many :received_messages, foreign_key: :receiver_id, class_name: 'Message'
 
   attr_accessor :delete_avatar
 
