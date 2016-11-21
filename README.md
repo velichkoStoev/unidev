@@ -10,7 +10,8 @@
 - ImageMagick
 
 I have installed Ruby and Rails using [RVM](https://rvm.io/) and I use [PgAdmin3](http://www.pgadmin.org/) for  a database management.  
-[Paperclip gem requires ImageMagick](https://github.com/thoughtbot/paperclip#image-processor).
+[Paperclip gem requires ImageMagick](https://github.com/thoughtbot/paperclip#image-processor).  
+Capybara runs feature specs using WebKit. Check [this page](https://github.com/velichkoStoev/unidev/wiki/Setup-capybara-webkit) for more information. 
 
 ###Steps 
 1. Clone this repo into a folder of choice with ```git clone```.
