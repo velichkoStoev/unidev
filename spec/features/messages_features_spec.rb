@@ -3,14 +3,13 @@ require 'rails_helper'
 describe 'Messages Features' do
   let!(:current_user) { FactoryGirl.create(:user) }
 
+  before { login_as(current_user, scope: :user) }
+
   feature 'User checks their messages' do
     let!(:sent_message) { FactoryGirl.create(:message, sender: current_user) }
     let!(:received_message) { FactoryGirl.create(:message, receiver: current_user) }
 
-    before do
-      login_as(current_user, scope: :user)
-      visit user_messages_path(current_user.id)
-    end
+    before { visit user_messages_path(current_user.id) }
 
     scenario 'they see their inbox' do
       expect(page).to have_selector('.panel-heading', text: 'Inbox')
@@ -35,7 +34,6 @@ describe 'Messages Features' do
     let!(:received_message) { FactoryGirl.create(:message, receiver: current_user) }
 
     before do
-      login_as(current_user, scope: :user)
       visit user_messages_path(current_user.id)
       click_link(received_message.title)
     end
@@ -57,7 +55,6 @@ describe 'Messages Features' do
 
   feature 'User composes a message', js: true do
     before do
-      login_as(current_user, scope: :user)
       visit user_messages_path(current_user.id)
       click_link('Compose new message')
     end

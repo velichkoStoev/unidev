@@ -4,15 +4,14 @@ describe 'Announcements Features' do
   let(:text_1) { 'testtesttesttesttest1' }
   let(:text_2) { 'testtesttesttesttest2' }
 
+  before { login_as(current_user, scope: :user) }
+
   feature 'User checks the announcements' do
     let!(:current_user) { FactoryGirl.create(:user) }
     let!(:announcement_1) { FactoryGirl.create(:announcement, user: current_user, text: text_1) }
     let!(:announcement_2) { FactoryGirl.create(:announcement, user: current_user, text: text_2) }
 
-    before do
-      login_as(current_user, scope: :user)
-      visit announcements_path
-    end
+    before { visit announcements_path }
 
     scenario 'they see a table with announcements' do
       expect(page).to have_selector('h3', text: 'Announcements', count: 1)
@@ -25,8 +24,6 @@ describe 'Announcements Features' do
 
   feature 'User clicks on announcement' do
     let!(:current_user) { FactoryGirl.create(:user) }
-
-    before { login_as(current_user, scope: :user) }
 
     shared_examples_for 'showing the announcement\'s page' do
       it { expect(page).to have_selector('h1', text: text_1) }
