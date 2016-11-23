@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  resources :users do
-    resources :skills, only: [:create, :destroy]
+  resources :users, except: [:edit] do
+    resources :skills, only: [:index, :create, :destroy]
     resources :projects, except: [:show], controller: 'project_participations'
     resources :announcements, except: [:show], controller: 'user_announcements'
     resources :messages, only: [:index, :new, :create, :show]

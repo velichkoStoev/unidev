@@ -9,7 +9,7 @@ describe 'Skills Features' do
     let!(:skill) { FactoryGirl.create(:skill) }
     let!(:user_skill) { FactoryGirl.create(:user_skill, skill: skill, user: current_user) }
 
-    before { visit edit_user_path(current_user.id) }
+    before { visit user_skills_path(current_user.id) }
 
     scenario 'they see a panel with the names of their skills' do
       expect(page).to have_selector('.panel-heading', text: 'My skills')
@@ -21,7 +21,7 @@ describe 'Skills Features' do
   feature 'User adds a skill', js: true do
     context 'when they add a new skill' do
       before do
-        visit edit_user_path(current_user.id)
+        visit user_skills_path(current_user.id)
 
         within('#new_skill') do
           fill_in('skill_name', with: 'Testing')
@@ -37,7 +37,7 @@ describe 'Skills Features' do
       let!(:user_skill) { FactoryGirl.create(:user_skill, skill: skill, user: current_user) }
 
       before do
-        visit edit_user_path(current_user.id)
+        visit user_skills_path(current_user.id)
 
         within('#new_skill') do
           fill_in('skill_name', with: 'Testing')
@@ -50,7 +50,7 @@ describe 'Skills Features' do
 
     context 'when they try to add empty skill name' do
       before do
-        visit edit_user_path(current_user.id)
+        visit user_skills_path(current_user.id)
 
         within('#new_skill') do
           fill_in('skill_name', with: '')
@@ -69,7 +69,7 @@ describe 'Skills Features' do
     let!(:user_skill_2) { FactoryGirl.create(:user_skill, skill: skill_2, user: current_user) }
 
     before do
-      visit edit_user_path(current_user.id)
+      visit user_skills_path(current_user.id)
 
       within("#skill_#{skill_2.id}") do
         click_link('Delete')

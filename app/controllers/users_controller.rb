@@ -11,15 +11,6 @@ class UsersController < ApplicationController
     @announcements = @user.announcements
   end
 
-  def edit
-    if params[:id].to_i != current_user.id
-      flash[:warning] = 'You can edit only your profile!'
-      redirect_to :dashboard
-    end
-
-    @skills = current_user.skills
-  end
-
   def search
     if search_params[:user_email].nil? || search_params[:user_email].empty?
       flash[:warning] = 'Please, input something in the search field!'

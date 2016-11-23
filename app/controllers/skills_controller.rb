@@ -1,6 +1,15 @@
 class SkillsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    if params[:user_id].to_i != current_user.id
+      flash[:warning] = 'You can edit only your profile!'
+      redirect_to :dashboard
+    end
+
+    @skills = current_user.skills
+  end
+
   def create
     @skill = Skill.find_or_create_by(name: skill_params[:name])
     current_user.skills << @skill
