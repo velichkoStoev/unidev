@@ -27,7 +27,7 @@ describe 'Pages Features' do
         expect(page).to have_selector('li a', text: 'Dashboard')
         expect(page).to have_selector('li a', text: 'Profile')
         expect(page).to have_selector('li a', text: 'View Profile')
-        expect(page).to have_selector('li a', text: 'Control Panel')
+        expect(page).to have_selector('li a', text: 'Settings')
         expect(page).to have_selector('li a', text: 'Log Out')
       end
     end
