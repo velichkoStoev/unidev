@@ -5,20 +5,6 @@ describe MessagesController do
 
   before { sign_in current_user }
 
-  describe 'GET index' do
-    before { get :index, user_id: current_user.id }
-
-    it { expect(response).to render_template(:index) }
-    it { expect(response).to have_http_status(:ok) }
-  end
-
-  describe 'GET new' do
-    before { xhr :get, :new, user_id: current_user.id, format: :js }
-
-    it { expect(response).to render_template(:new) }
-    it { expect(response).to have_http_status(:ok) }
-  end
-
   describe 'POST create' do
     let!(:receiver) { FactoryGirl.create(:user) }
 
