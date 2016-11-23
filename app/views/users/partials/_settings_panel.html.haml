@@ -1,0 +1,9 @@
+.col-md-4
+  .panel.panel-danger
+    .panel-heading Settings
+    %ul.list-group
+      = link_to 'Profile', edit_user_registration_path, class: 'list-group-item'
+      = link_to 'Skills', user_skills_path(current_user), class: 'list-group-item'
+      = link_to 'Projects', user_projects_path(current_user), class: 'list-group-item'
+      = link_to 'Announcements', user_announcements_path(current_user), class: 'list-group-item'
+      = link_to 'Messages', user_messages_path(current_user), class: 'list-group-item'

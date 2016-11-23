@@ -18,7 +18,7 @@
                 %span.caret
               %ul.dropdown-menu
                 %li= link_to 'View Profile', current_user
-                %li= link_to 'Control Panel',  edit_user_registration_path
+                %li= link_to 'Settings',  edit_user_registration_path
                 %li.divider{ role: 'separator' }
                 %li= link_to 'Log Out', destroy_user_session_path, method: :delete
           - else

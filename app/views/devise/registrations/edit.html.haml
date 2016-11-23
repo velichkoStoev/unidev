@@ -1,15 +1,6 @@
 .container
-  %h2 Control Panel
-  .row
-    .col-md-4
-      .panel.panel-danger
-        .panel-heading Panels
-        %ul.list-group
-          = link_to 'General Settings', edit_user_registration_path, class: 'list-group-item'
-          = link_to 'Skills', user_skills_path(current_user), class: 'list-group-item'
-          = link_to 'Projects', user_projects_path(current_user), class: 'list-group-item'
-          = link_to 'Announcements', user_announcements_path(current_user), class: 'list-group-item'
-          = link_to 'Messages', user_messages_path(current_user), class: 'list-group-item'
+  .row.first-row
+    = render 'users/partials/settings_panel'
     .col-md-4
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification
