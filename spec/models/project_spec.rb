@@ -29,6 +29,15 @@ describe Project do
     end
   end
 
+  describe '#created_by?' do
+    let(:user) { FactoryGirl.build(:user) }
+    let(:user_project) { FactoryGirl.build(:project, creator: user) }
+    let(:another_user_project) { FactoryGirl.build(:project) }
+
+    it { expect(user_project.created_by?(user)).to be_truthy }
+    it { expect(another_user_project.created_by?(user)).to be_falsy }
+  end
+
   describe 'Timestamp stringify methods' do
     let(:stringified_timestamp) { '01 January 2016' }
 

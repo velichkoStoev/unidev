@@ -10,17 +10,21 @@ class Project < ActiveRecord::Base
   validates :creator, presence: true
   validates_format_of :repository_link, with: URI.regexp(%w(http https)), allow_blank: true
 
+  def repository_url
+    return '' unless repository_link
+    repository_link_tokens = repository_link.split('/')
+    "/#{repository_link_tokens[-2]}/#{repository_link_tokens[-1]}"
+  end
+
+  def created_by?(user)
+    creator_id == user.id
+  end
+
   def date_created
     created_at.localtime.strftime('%d %B %Y')
   end
 
   def date_updated
     updated_at.localtime.strftime('%d %B %Y')
-  end
-
-  def repository_url
-    return '' unless repository_link
-    repository_link_tokens = repository_link.split('/')
-    "/#{repository_link_tokens[-2]}/#{repository_link_tokens[-1]}"
   end
 end

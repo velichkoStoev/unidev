@@ -79,7 +79,7 @@
               %td= project.date_created
               %td= project.date_updated
               %td
-                - if project.creator_id == current_user.id
+                - if project.created_by?(@user)
                   Yes
                 - else
                   No
