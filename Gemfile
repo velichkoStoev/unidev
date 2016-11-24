@@ -49,6 +49,7 @@ group :development, :test do
   gem 'capybara', '< 2.8.0', '>= 2.3.0'
   gem 'capybara-webkit', '~> 1.11', '>= 1.11.1'
   gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+  gem 'simplecov', '~> 0.12.0', require: false
 end
 
 group :development do
