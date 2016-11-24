@@ -82,7 +82,7 @@ describe UsersController do
       scenario { expect(page).to have_selector('h3', text: '0 results found.') }
     end
 
-    context 'when there aren registered users' do
+    context 'when there are registered users' do
       let!(:user_1) { FactoryGirl.create(:user, email: 'testuseremail@unidev.com') }
       let!(:user_2) { FactoryGirl.create(:user, email: 'anothertestusermail@unidev.com') }
 
