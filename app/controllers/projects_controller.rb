@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :search]
+  before_action :authenticate_user!, only: [:show]
 
   def index
     @projects = Project.all
