@@ -68,6 +68,18 @@ describe ProjectsController do
       scenario { expect(page).to have_selector('h3', text: '0 results found.') }
     end
 
+    context 'when the search input is empty' do
+      let(:flash_notification_warning) { 'Please, input something in the search field!' }
+
+      before do
+        within 'form.simple_form.form-inline' do
+          click_button('Go!')
+        end
+      end
+
+      scenario { expect(page).to have_selector('.alert.alert-warning', text: flash_notification_warning) }
+    end
+
     context 'when there are registered users' do
       let!(:project_1) { FactoryGirl.create(:project, name: 'Project One') }
       let!(:project_2) { FactoryGirl.create(:project, name: 'Project Two') }
