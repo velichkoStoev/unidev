@@ -38,6 +38,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Travis CI
+gem 'travis', '~> 1.8', '>= 1.8.4'
+
 group :development, :test do
   gem 'byebug'
   gem 'rails-erd', '~> 1.5'

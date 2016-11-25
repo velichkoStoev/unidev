@@ -1,21 +1,28 @@
 language: ruby
 rvm:
-  - 2.2.1
+- 2.2.1
 env:
+  matrix:
   - RAILS_ENV=test
+  global:
+    secure: bbelCT5YmPa1nJ9PRcgFXmOiRhB3RXuEeG5l+Cgf6nBo7C6anb+Z+JxjVUMF6PmfZAmCI92YhdlCSzRQ+B06WbEl1M94fVp3KcKKmzuDGzX8KA1fXC8mUPCTJDiKo5dJNRigj16ZYUO2AUwC0qj5svtuvb+4J2WluUmz8GtgW/u8bXbpFuuK7cB0HF4DTBxND/FmwdIDDjSeic2UpKUCeG5IFEIU4pmQB5A1vW5O8qV8K2p8Kr4fwewg9wVENARW6BOJO20BUATXNZKUfCyxCYYI12mgwEv89XeIhNyp1FfAWzHR4WIyDNlmd7y9TRSnTfb6Yujo8WiNyrC5x9TSBBiOtJbJc3M3f+wVd6UoRzLjqbJkurcAZU92RBhc8Q3Fof/tAxqJVBIhvAGfLy7mZ6CiuPsX8ifwM+23052mpigo5EgipfLOyVuvTulmzTbyciFGbsyvfUGwbjFVfPZZDUNHNYkl/AoQ4mLpLfeAPGuhFbOFsIsycDwgrP+NnOo+Wmnl1HKZE6kW6PA2wm8ivhuLQYR/t5CSLRoVLMV9Ngx6IK0844nnUEZoilv8yHHiY4zf3egdY92q8ihZepdcegoEwHQKimyUoHvyAduGKGakJWR3Ceyr557+NrKqyqDZodPb9Y6siFzgrwm9vpE4CAg5p39N9mlssOEn7prWmJw=
 branches:
-    only:
-      - master
-      - dev
+  only:
+  - master
+  - dev
 services:
-  - postgresql
+- postgresql
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
 script:
-  - bundle exec rake db:setup
-  - bundle exec rake db:test:prepare
-  - xvfb-run -a bundle exec rspec
+- bundle exec rake db:setup
+- bundle exec rake db:test:prepare
+- xvfb-run -a bundle exec rspec
 before_script:
-  - psql -c "CREATE USER unidev WITH PASSWORD 'unidev' SUPERUSER CREATEDB;" -U postgres
+- psql -c "CREATE USER unidev WITH PASSWORD 'unidev' SUPERUSER CREATEDB;" -U postgres
+after_success:
+  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
+  - "chmod a+x /tmp/travis-automerge"
+  - "BRANCHES_TO_MERGE_REGEX='dev' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=velichkoStoev/unidev /tmp/travis-automerge"
 notifications:
   email: false
