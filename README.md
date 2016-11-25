@@ -20,5 +20,5 @@ I have installed Ruby and Rails using [RVM](https://rvm.io/) and I use [PgAdmin3
 5. Start your Rails server with ```rails s``` or ```rails server```.
 6. Run the specs with ```bundle exec rspec``` or with ```COVERAGE=true bundle exec rspec``` if you want a coverage report. 
 
-
-
+##Wiki
+Please visit our [wiki page](https://github.com/velichkoStoev/unidev/wiki) for more information. 
