@@ -66,4 +66,16 @@ describe SkillsController do
     it { expect(response).to render_template(:destroy) }
     it { expect(response).to have_http_status(:ok) }
   end
+
+  describe 'GET name_suggestions' do
+    let(:params) { { term: 'Nam' } }
+    let!(:skill_1) { FactoryGirl.create(:skill, name: 'Name 1') }
+    let!(:skill_2) { FactoryGirl.create(:skill, name: 'Name 2') }
+    let!(:skill_3) { FactoryGirl.create(:skill, name: 'Skill') }
+
+    before { get :name_suggestions, params }
+
+    it { expect(response).to have_http_status(:ok) }
+    it { expect(response.body).to eq([skill_1.name, skill_2.name].to_json) }
+  end
 end

@@ -29,6 +29,11 @@ class SkillsController < ApplicationController
     respond_to { |format| format.js }
   end
 
+  def name_suggestions
+    skills = Skill.order(:name).where('name ILIKE ?', "%#{params[:term]}%")
+    render json: skills.map(&:name)
+  end
+
   private
 
   def skill_params

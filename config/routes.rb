@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   resources :announcements, only: [:index, :show]
 
+  match '/skills/name_suggestions' => 'skills#name_suggestions', via: :get, as: 'name_suggestions'
+
   get '/dashboard', to: 'pages#dashboard'
 
   root 'pages#home'
