@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
+autocomplete = ->
   $('#skill_name').autocomplete
     appendTo: '.skill_name'
     source: '/skills/name_suggestions'
@@ -10,3 +10,6 @@ jQuery ->
     select: (event, ui) ->
       $('#skill_name').val ui.item.value
       false
+
+$(document).ready autocomplete
+$(document).on 'page:update', autocomplete
