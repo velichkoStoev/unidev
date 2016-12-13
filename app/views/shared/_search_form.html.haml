@@ -1,0 +1,5 @@
+.h4 Search
+= simple_form_for :search, url: url_for(action: 'search', controller: locals[:controller]), method: :get, html: { class: 'form-inline' } do |f|
+  .form-group
+    = f.input :term, required: false, placeholder: locals[:placeholder], class: 'form-control', label: false
+  = f.button :submit, 'Go!', class: 'btn btn-default'

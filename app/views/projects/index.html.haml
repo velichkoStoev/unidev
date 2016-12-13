@@ -3,11 +3,7 @@
   .container-fluid
     .row
       .col-md-4
-        .h4 Search
-        = simple_form_for :search, url: url_for(action: 'search', controller: 'projects'), method: :get, html: { class: 'form-inline' } do |f|
-          .form-group
-            = f.input :term, required: false, placeholder: 'Type project name here', class: 'form-control', label: false
-          = f.button :submit, 'Go!', class: 'btn btn-default'
+        = render 'shared/search_form', locals: { controller: 'projects', placeholder: 'Type project name here ...'}
     %hr
     .row
       .col-md-12
