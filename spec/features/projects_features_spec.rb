@@ -60,7 +60,7 @@ describe ProjectsController do
     context 'when there aren\'t any existing projects' do
       before do
         within 'form.simple_form.form-inline' do
-          fill_in('search_project_name', with: 'projectname')
+          fill_in('search_term', with: 'projectname')
           click_button('Go!')
         end
       end
@@ -87,7 +87,7 @@ describe ProjectsController do
       context 'but there aren\'t any project names matching the provided search input' do
         before do
           within 'form.simple_form.form-inline' do
-            fill_in('search_project_name', with: 'projectname')
+            fill_in('search_term', with: 'projectname')
             click_button('Go!')
           end
         end
@@ -98,7 +98,7 @@ describe ProjectsController do
       context 'and there are project names matching the provided search input' do
         before do
           within 'form.simple_form.form-inline' do
-            fill_in('search_project_name', with: 'One')
+            fill_in('search_term', with: 'One')
             click_button('Go!')
           end
         end

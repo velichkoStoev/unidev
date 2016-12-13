@@ -74,7 +74,7 @@ describe UsersController do
     context 'when there aren\'t any registered users' do
       before do
         within 'form.simple_form.form-inline' do
-          fill_in('search_user_email', with: 'testmail')
+          fill_in('search_term', with: 'testmail')
           click_button('Go!')
         end
       end
@@ -101,7 +101,7 @@ describe UsersController do
       context 'but there aren\'t any user emails matching the provided search input' do
         before do
           within 'form.simple_form.form-inline' do
-            fill_in('search_user_email', with: 'testmail')
+            fill_in('search_term', with: 'testmail')
             click_button('Go!')
           end
         end
@@ -112,7 +112,7 @@ describe UsersController do
       context 'and there are user email matching the provided search input' do
         before do
           within 'form.simple_form.form-inline' do
-            fill_in('search_user_email', with: 'testuseremail')
+            fill_in('search_term', with: 'testuseremail')
             click_button('Go!')
           end
         end
