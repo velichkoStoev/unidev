@@ -19,13 +19,13 @@ addons:
 script:
 - bundle exec rake db:setup
 - bundle exec rake db:test:prepare
-- xvfb-run -a bundle exec rspec
+- COVERAGE=true xvfb-run -a bundle exec rspec
 before_script:
 - psql -c "CREATE USER unidev WITH PASSWORD 'unidev' SUPERUSER CREATEDB;" -U postgres
 after_success:
   - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
   - "chmod a+x /tmp/travis-automerge"
   - "BRANCHES_TO_MERGE_REGEX='dev' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=velichkoStoev/unidev /tmp/travis-automerge"
-  - bundle exec codeclimate-test-reporter COVERAGE=true
+  - bundle exec codeclimate-test-reporter
 notifications:
   email: false
