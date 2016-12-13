@@ -56,6 +56,10 @@ group :development, :test do
   gem 'simplecov', '~> 0.12.0', require: false
 end
 
+group :test do
+  gem 'codeclimate-test-reporter', '~> 1.0', '>= 1.0.3'
+end
+
 group :development do
   gem 'web-console', '~> 2.0'
 
