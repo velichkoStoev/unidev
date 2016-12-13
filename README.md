@@ -1,6 +1,6 @@
 #UniDev
 
-[![Build Status](https://travis-ci.org/velichkoStoev/unidev.svg?branch=master)](https://travis-ci.org/velichkoStoev/unidev) [![Code Climate](https://codeclimate.com/github/velichkoStoev/unidev/badges/gpa.svg)](https://codeclimate.com/github/velichkoStoev/unidev)
+[![Build Status](https://travis-ci.org/velichkoStoev/unidev.svg?branch=master)](https://travis-ci.org/velichkoStoev/unidev) [![Code Climate](https://codeclimate.com/github/velichkoStoev/unidev/badges/gpa.svg)](https://codeclimate.com/github/velichkoStoev/unidev) [![Test Coverage](https://codeclimate.com/github/velichkoStoev/unidev/badges/coverage.svg)](https://codeclimate.com/github/velichkoStoev/unidev/coverage)
 
 ##Setup 
 ###Requirements
