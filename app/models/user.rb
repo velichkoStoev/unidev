@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   validates :faculty, presence: true
   validates :email, presence: true,
                     format: {
-                      with: /\b[A-Z0-9._%a-z\-]+@unidev\.com\z/,
+                      with: /\A([\w\.%\+\-]+)@unidev\.com\z/i,
                       message: 'The e-mail domain must be @unidev.com'
                     }
 
