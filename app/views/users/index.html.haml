@@ -6,7 +6,7 @@
         .h4 Search
         = simple_form_for :search, url: url_for(action: 'search', controller: 'users'), method: :get, html: { class: 'form-inline' } do |f|
           .form-group
-            = f.input :user_email, required: false, placeholder: 'Type user email here', class: 'form-control', label: false
+            = f.input :term, required: false, placeholder: 'Type user email here', class: 'form-control', label: false
           = f.button :submit, 'Go!', class: 'btn btn-default'
     %hr
     .row
