@@ -14,6 +14,8 @@ services:
 - postgresql
 addons:
   postgresql: '9.3'
+  code_climate:
+      repo_token: a48e295e72c08415389b4ac057b39de2399de4f01dd9ae6f43d8e52b3ab167a9
 script:
 - bundle exec rake db:setup
 - bundle exec rake db:test:prepare
@@ -24,5 +26,6 @@ after_success:
   - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
   - "chmod a+x /tmp/travis-automerge"
   - "BRANCHES_TO_MERGE_REGEX='dev' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=velichkoStoev/unidev /tmp/travis-automerge"
+  - bundle exec codeclimate-test-reporter COVERAGE=true
 notifications:
   email: false
