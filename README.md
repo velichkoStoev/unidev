@@ -8,7 +8,7 @@
 - Rails 4.2.4
 - PosgreSQL 9.3.9
 
-I have installed Ruby and Rails using [RVM](https://rvm.io/) and I use [PgAdmin3](http://www.pgadmin.org/) for  a database management. 
+I have installed Ruby using [RVM](https://rvm.io/) and I use [PgAdmin3](http://www.pgadmin.org/) for  a database management. 
 
 ###Steps 
 1. Clone this repo into a folder of choice with ```git clone```.
