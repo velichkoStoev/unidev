@@ -11,9 +11,9 @@ describe SkillsController do
     context 'when there isn\'t a skill with the provided name' do
       before { xhr :post, :create, params, format: :js }
 
-      it 'creates the Skill record' do
-        skill = Skill.first
+      let(:skill) { Skill.first }
 
+      it 'creates the Skill record with the proper name' do
         expect(skill.name).to eq('Test')
       end
 
